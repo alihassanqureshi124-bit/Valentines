@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shazia 💖 Be My Valentine</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #ff3f6c;
+      font-size: 24px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff3f6c;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    #reason {
+      margin-top: 15px;
+      color: #ff3f6c;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Shazia 💖<br>Will you be my Valentine?</h1>
+
+  <button id="yes" onclick="yesClick()">Yes 💕</button>
+  <button id="no" onmouseover="moveNo()">No 🙈</button>
+
+  <div id="reason"></div>
+</div>
+
+<audio id="song">
+  <source src="https://pagalworld.com.se/files/download/id/6873" type="audio/mpeg">
+</audio>
+
+<script>
+  const reasons = [
+    "Shazia tum meri duniya ho ❤️",
+    "Main tumhare bina adhoora hoon 💔",
+    "Tumhari muskaan meri jaan hai 😊",
+    "Tum hi mera future ho 💍",
+    "Dil ne already haan keh di hai 😉",
+    "Sirf tum hi ho meri Valentine 💖",
+    "Mana karna allowed hi nahi 😏"
+  ];
+
+  let i = 0;
+
+  function moveNo() {
+    const noBtn = document.getElementById("no");
+    const reason = document.getElementById("reason");
+
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    reason.innerText = reasons[i];
+    i = (i + 1) % reasons.length;
+  }
+
+  function yesClick() {
+    document.getElementById("song").play();
+
+    document.body.innerHTML = `
+      <div style="text-align:center; padding:30px;">
+        <h1 style="color:white;">I Love You Shazia 💖😍</h1>
+        <p style="color:white;">Best Valentine ever 💕</p>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
